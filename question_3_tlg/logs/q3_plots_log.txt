@@ -1,0 +1,61 @@
+Q3 AE Visualizations Log
+Run timestamp: 2026-02-25 05:21:17 
+
+Loaded packages successfully.
+
+Input dimensions:
+ADAE: 1191 x 107 
+ADSL: 306 x 55 
+
+TEAE records: 1122 
+
+Plot 1 data preview (event counts):
+# A tibble: 9 × 3
+  ACTARM               AESEV     n_ae
+  <chr>                <fct>    <int>
+1 Placebo              MILD       210
+2 Placebo              MODERATE    65
+3 Placebo              SEVERE       6
+4 Xanomeline High Dose MILD       286
+5 Xanomeline High Dose MODERATE   118
+6 Xanomeline High Dose SEVERE      10
+7 Xanomeline Low Dose  MILD       232
+8 Xanomeline Low Dose  MODERATE   170
+9 Xanomeline Low Dose  SEVERE      25
+
+Saved Plot 1: question_3_tlg/output/ae_severity_by_treatment.png
+
+Overall TEAE subject denominator (n): 217 
+Top 10 AETERM overall:
+# A tibble: 10 × 2
+   AETERM                      n_subj
+   <chr>                        <int>
+ 1 PRURITUS                        54
+ 2 APPLICATION SITE PRURITUS       50
+ 3 ERYTHEMA                        36
+ 4 APPLICATION SITE ERYTHEMA       30
+ 5 RASH                            26
+ 6 APPLICATION SITE DERMATITIS     21
+ 7 APPLICATION SITE IRRITATION     21
+ 8 DIZZINESS                       21
+ 9 DIARRHOEA                       17
+10 SINUS BRADYCARDIA               17
+
+Plot 2 data preview:
+# A tibble: 10 × 9
+   AETERM     n_subj   rate ci_low ci_high rate_pct ci_low_pct ci_high_pct y_pos
+   <fct>       <int>  <dbl>  <dbl>   <dbl>    <dbl>      <dbl>       <dbl> <int>
+ 1 DIARRHOEA      17 0.0783 0.0495   0.122     7.83       4.95        12.2     1
+ 2 SINUS BRA…     17 0.0783 0.0495   0.122     7.83       4.95        12.2     2
+ 3 APPLICATI…     21 0.0968 0.0642   0.143     9.68       6.42        14.3     3
+ 4 APPLICATI…     21 0.0968 0.0642   0.143     9.68       6.42        14.3     4
+ 5 DIZZINESS      21 0.0968 0.0642   0.143     9.68       6.42        14.3     5
+ 6 RASH           26 0.120  0.0831   0.170    12.0        8.31        17.0     6
+ 7 APPLICATI…     30 0.138  0.0986   0.190    13.8        9.86        19.0     7
+ 8 ERYTHEMA       36 0.166  0.122    0.221    16.6       12.2         22.1     8
+ 9 APPLICATI…     50 0.230  0.179    0.291    23.0       17.9         29.1     9
+10 PRURITUS       54 0.249  0.196    0.310    24.9       19.6         31.0    10
+
+Saved Plot 2: question_3_tlg/output/top10_ae_incidence_ci.png
+
+Q3 visualization script completed successfully.

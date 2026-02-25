@@ -1,0 +1,46 @@
+Q3 AE Summary Table Log
+Run timestamp: 2026-02-25 05:11:35 
+
+Loaded packages successfully.
+
+Input dimensions:
+ADAE: 1191 x 107 
+ADSL: 306 x 55 
+
+Row variable selected: AETERM 
+
+Treatment denominators:
+# A tibble: 4 × 2
+  ACTARM               N_DENOM
+  <chr>                  <int>
+1 Placebo                   86
+2 Screen Failure            52
+3 Xanomeline High Dose      72
+4 Xanomeline Low Dose       96
+Total N: 306 
+
+Created denominator summary with gtsummary (for QA/logging).
+
+TEAE records (TRTEMFL == 'Y'): 1122 
+Distinct subject-AETERM rows: 779
+
+AE summary table written:
+- question_3_tlg/output/ae_summary_table.html 
+
+Preview (first 10 rows):
+# A tibble: 10 × 6
+   ROW_LABEL               Total Placebo `Screen Failure` `Xanomeline High Dose`
+   <chr>                   <chr> <chr>   <chr>            <chr>                 
+ 1 PRURITUS                54 (… 8 (9.3… 0 (0.0%)         25 (34.7%)            
+ 2 APPLICATION SITE PRURI… 50 (… 6 (7.0… 0 (0.0%)         21 (29.2%)            
+ 3 ERYTHEMA                36 (… 8 (9.3… 0 (0.0%)         14 (19.4%)            
+ 4 APPLICATION SITE ERYTH… 30 (… 3 (3.5… 0 (0.0%)         14 (19.4%)            
+ 5 RASH                    26 (… 5 (5.8… 0 (0.0%)         8 (11.1%)             
+ 6 APPLICATION SITE DERMA… 21 (… 5 (5.8… 0 (0.0%)         7 (9.7%)              
+ 7 APPLICATION SITE IRRIT… 21 (… 3 (3.5… 0 (0.0%)         9 (12.5%)             
+ 8 DIZZINESS               21 (… 2 (2.3… 0 (0.0%)         10 (13.9%)            
+ 9 DIARRHOEA               17 (… 9 (10.… 0 (0.0%)         3 (4.2%)              
+10 SINUS BRADYCARDIA       17 (… 2 (2.3… 0 (0.0%)         8 (11.1%)             
+# ℹ 1 more variable: `Xanomeline Low Dose` <chr>
+
+Q3 summary table script completed successfully.
