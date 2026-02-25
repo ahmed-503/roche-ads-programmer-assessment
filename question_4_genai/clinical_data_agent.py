@@ -6,7 +6,7 @@ import json
 import os
 import re
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 import pandas as pd
 
@@ -15,6 +15,7 @@ try:
     from langchain_core.prompts import ChatPromptTemplate
     from langchain_core.output_parsers import StrOutputParser
     from langchain_openai import ChatOpenAI
+
     LANGCHAIN_AVAILABLE = True
 except Exception:
     LANGCHAIN_AVAILABLE = False
@@ -29,7 +30,7 @@ class ParsedQuery:
 class ClinicalTrialDataAgent:
     """
     GenAI Clinical Data Assistant for AE dataset.
-    
+
     Responsibilities:
     1) Understand schema (column meanings).
     2) Convert natural language questions into structured JSON:
@@ -116,7 +117,9 @@ Output JSON only:
         val = str(parsed_query.filter_value).strip()
 
         if col not in self.ae_df.columns:
-            raise ValueError(f"Invalid target_column '{col}'. Available columns include: {list(self.ae_df.columns)}")
+            raise ValueError(
+                f"Invalid target_column '{col}'. Available columns include: {list(self.ae_df.columns)}"
+            )
 
         # Case-insensitive exact/contains hybrid matching:
         # - Exact match first
@@ -223,7 +226,10 @@ Output JSON only:
             return ParsedQuery(target_column="AESEV", filter_value="MODERATE")
 
         # 2) Body system -> AESOC
-        if any(word in q_lower for word in ["body system", "system organ class", "soc", "cardiac", "skin", "gastro", "nervous"]):
+        if any(
+            word in q_lower
+            for word in ["body system", "system organ class", "soc", "cardiac", "skin", "gastro", "nervous"]
+        ):
             # Common shortcuts
             if "cardiac" in q_lower:
                 return ParsedQuery(target_column="AESOC", filter_value="CARDIAC")
@@ -288,7 +294,7 @@ Output JSON only:
         start = raw_text.find("{")
         end = raw_text.rfind("}")
         if start != -1 and end != -1 and end > start:
-            return json.loads(raw_text[start:end + 1])
+            return json.loads(raw_text[start : end + 1])
 
         raise ValueError(f"Could not parse JSON from LLM output: {raw_text}")
 
@@ -306,34 +312,3 @@ def load_ae_csv(csv_path: str) -> pd.DataFrame:
     df.columns = [c.upper() for c in df.columns]
 
     return df
-
-
-# ----------------------------------
-# Test script (3 example queries)
-# ----------------------------------
-if __name__ == "__main__":
-    # Update this path to your actual file location
-    # The assessment says "adae.csv (pharmaversesdtm::ae)" — use the CSV you export/provide.
-    CSV_PATH = "adae.csv"
-
-    ae = load_ae_csv(CSV_PATH)
-
-    # Set use_llm=True if you have OPENAI_API_KEY and langchain packages installed.
-    # Otherwise leave False to use the mock parser.
-    agent = ClinicalTrialDataAgent(
-        ae_df=ae,
-        use_llm=False,  # change to True if using OpenAI/LangChain
-        model_name="gpt-4o-mini",
-    )
-
-    example_questions = [
-        "Give me the subjects who had Adverse events of Moderate severity.",
-        'Which subjects had the condition "Headache"?',
-        "Show me subjects with cardiac adverse events.",
-    ]
-
-    for i, q in enumerate(example_questions, start=1):
-        print("\n" + "=" * 80)
-        print(f"Example Query {i}: {q}")
-        response = agent.ask(q)
-        print(json.dumps(response, indent=2))
