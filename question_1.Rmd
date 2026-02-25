@@ -1,4 +1,0 @@
----
-title: "question_1"
-output: html_document
----
