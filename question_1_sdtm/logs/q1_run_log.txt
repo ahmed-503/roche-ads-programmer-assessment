@@ -1,0 +1,56 @@
+Q1 DS Domain Creation Log
+Run timestamp: 2026-02-25 02:42:22 
+
+Loaded packages successfully.
+
+ds_raw dimensions:  850 x 13 
+ds_raw columns:
+ [1] "STUDY"      "PATNUM"     "SITENM"     "INSTANCE"   "FORM"      
+ [6] "FORML"      "IT.DSTERM"  "IT.DSDECOD" "OTHERSP"    "DSDTCOL"   
+[11] "DSTMCOL"    "IT.DSSTDAT" "DEATHDT"   
+
+Head of ds_raw:
+# A tibble: 6 × 13
+  STUDY  PATNUM SITENM INSTANCE FORM  FORML IT.DSTERM IT.DSDECOD OTHERSP DSDTCOL
+  <chr>  <chr>  <chr>  <chr>    <chr> <chr> <chr>     <chr>      <chr>   <chr>  
+1 CDISC… 701-1… CDISC… Baseline DISC1 Subj… Randomiz… Randomized <NA>    01-02-…
+2 CDISC… 701-1… CDISC… Week 26  DISC1 Subj… Protocol… Completed  <NA>    07-02-…
+3 CDISC… 701-1… CDISC… Week 26  DISC1 Subj… <NA>      <NA>       Final … 07-02-…
+4 CDISC… 701-1… CDISC… Baseline DISC1 Subj… Randomiz… Randomized <NA>    08-05-…
+5 CDISC… 701-1… CDISC… Week 4   DISC1 Subj… Adverse … Adverse E… <NA>    09-02-…
+6 CDISC… 701-1… CDISC… Week 4   DISC1 Subj… <NA>      <NA>       Final … 09-02-…
+# ℹ 3 more variables: DSTMCOL <chr>, IT.DSSTDAT <chr>, DEATHDT <chr>
+
+study_ct loaded from: question_1_sdtm/input/sdtm_ct.csv 
+study_ct dimensions:  164 x 6 
+study_ct columns:
+[1] "codelist_code"       "term_code"           "term_value"         
+[4] "collected_value"     "term_preferred_term" "term_synonyms"      
+
+Controlled terminology mapping rows: 318 
+
+Final DS dimensions:  850 x 12 
+
+Final DS preview:
+# A tibble: 10 × 12
+   STUDYID      DOMAIN USUBJID   DSSEQ DSTERM DSDECOD DSCAT VISITNUM VISIT DSDTC
+   <chr>        <chr>  <chr>     <int> <chr>  <chr>   <chr>    <dbl> <chr> <chr>
+ 1 CDISCPILOT01 DS     CDISCPIL…     1 Rando… RANDOM… DISP…       NA Subj… 2014…
+ 2 CDISCPILOT01 DS     CDISCPIL…     2 Proto… COMPLE… DISP…       26 Subj… 2014…
+ 3 CDISCPILOT01 DS     CDISCPIL…     3 Final… FINAL … DISP…       26 Subj… 2014…
+ 4 CDISCPILOT01 DS     CDISCPIL…     1 Rando… RANDOM… DISP…       NA Subj… 2012…
+ 5 CDISCPILOT01 DS     CDISCPIL…     2 Adver… ADVERS… DISP…        4 Subj… 2012…
+ 6 CDISCPILOT01 DS     CDISCPIL…     3 Final… FINAL … DISP…        4 Subj… 2012…
+ 7 CDISCPILOT01 DS     CDISCPIL…     4 Final… FINAL … DISP…       NA Subj… 2013…
+ 8 CDISCPILOT01 DS     CDISCPIL…     1 Rando… RANDOM… DISP…       NA Subj… 2013…
+ 9 CDISCPILOT01 DS     CDISCPIL…     2 Proto… COMPLE… DISP…       26 Subj… 2014…
+10 CDISCPILOT01 DS     CDISCPIL…     3 Final… FINAL … DISP…       26 Subj… 2014…
+# ℹ 2 more variables: DSSTDTC <chr>, DSSTDY <int>
+
+Required variables present: YES
+
+Output files written:
+- question_1_sdtm/output/ds.csv
+- question_1_sdtm/output/ds.rds
+
+Q1 script completed successfully.
